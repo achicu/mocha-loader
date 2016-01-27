@@ -9,7 +9,7 @@ module.exports.pitch = function(req) {
 	this.cacheable && this.cacheable();
 	var query = loaderUtils.parseQuery(this.query);
 	var source = [];
-	if(this.target == "web") {
+	if(this.target == "web" || this.target == "atom") {
 		source.push("require(" + JSON.stringify("!!" + path.join(__dirname, "web.js")) + ");");
 		source.push("mocha.setup(" + JSON.stringify(query["interface"] || "bdd") + ");");
 		source.push("require(" + JSON.stringify("!!" + req) + ")");
